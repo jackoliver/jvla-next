@@ -7,12 +7,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --links: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #aaaaaa;
+    --links: #ffffff;
   }
 }
 
@@ -20,6 +22,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: "Inter", Arial, Helvetica, sans-serif;
+  padding: 5vw;
 }
 
 .mono {
@@ -30,4 +33,42 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+header {
+  font-size: 1.5rem;
+  margin-bottom: 4vw;
+  color: var(--links);
+}
+
+main {
+  font-size: 1rem;
+  color: var(--foreground);
+}
+
+main span {
+  background: var(--foreground);
+  color: var(--background);
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 1rem;
+  margin-right: 1rem;
+  line-height: 2;
+}
+
+a {
+  color: var(--links);
+  text-decoration: none;
+  border-bottom: 2px solid var(--links);
+  font-weight: 600;
+}
+
+a:hover {
+  color: var(--background);
+  background: var(--links);
 }
