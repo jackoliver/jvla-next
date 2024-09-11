@@ -1,5 +1,9 @@
 import { getAllBooks } from "@/lib/api";
+import { LastFM, LastFm } from "@/lib/lastfm";
+
 import Image from "next/image";
+
+import { Music } from "../components/music";
 
 const BookItem = ({ id, title, rating, genres, cover, link, summary }) => (
   <li key={id}>
@@ -38,6 +42,10 @@ const Library = ({ books }) => (
 
 export default async function Home() {
   const books = await getAllBooks();
+  const topTracks = await LastFM().User.getTopTracks({
+    limit: 5,
+    period: "7day",
+  });
 
   return (
     <main>
@@ -53,6 +61,8 @@ export default async function Home() {
         <a href="https://github.com/jackoliver">GitHub</a>. Or{" "}
         <a href="mailto:jack@jv-la.com">send me an email</a>.
       </p>
+
+      <Music topTracks={topTracks} />
       {/* <Library books={books} /> */}
     </main>
   );
