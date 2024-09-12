@@ -1,50 +1,59 @@
-import { getAllBooks } from "@/lib/api";
-import { LastFM, LastFm } from "@/lib/lastfm";
+// import { getAllBooks } from "@/lib/api";
+import { LastFM } from "@/lib/fm";
 
-import Image from "next/image";
+import { Music } from "../components/Music";
 
-import { Music } from "../components/music";
+// const BookItem = ({ id, title, rating, genres, cover, link, summary }) => (
+//   <li key={id}>
+//     {/* <Image
+//       width={200}
+//       height={200}
+//       className="object-fit"
+//       src={cover.url}
+//       alt={title}
+//     /> */}
+//     <a target="_blank" href={link}>
+//       {title}
+//     </a>{" "}
+//     {rating}/5 {genres.map((genre: string) => genre).join(", ")}
+//     <br />
+//     <br />
+//     <em>{summary}</em>
+//     <br />
+//     <br />
+//   </li>
+// );
 
-const BookItem = ({ id, title, rating, genres, cover, link, summary }) => (
-  <li key={id}>
-    {/* <Image
-      width={200}
-      height={200}
-      className="object-fit"
-      src={cover.url}
-      alt={title}
-    /> */}
-    <a target="_blank" href={link}>
-      {title}
-    </a>{" "}
-    {rating}/5 {genres.map((genre: string) => genre).join(", ")}
-    <br />
-    <br />
-    <em>{summary}</em>
-    <br />
-    <br />
-  </li>
-);
-
-const Library = ({ books }) => (
-  <>
-    <br />
-    <h2>Library</h2>
-    <hr />
-    <br />
-    <ul>
-      {books.map((book) => (
-        <BookItem key={book.id} {...book} />
-      ))}
-    </ul>
-  </>
-);
+// const Library = ({ books }) => (
+//   <>
+//     <br />
+//     <h2>Library</h2>
+//     <hr />
+//     <br />
+//     <ul>
+//       {books.map((book) => (
+//         <BookItem key={book.id} {...book} />
+//       ))}
+//     </ul>
+//   </>
+// );
 
 export default async function Home() {
-  const books = await getAllBooks();
-  const topTracks = await LastFM().User.getTopTracks({
+  // const books = await getAllBooks();
+
+  const fm = LastFM().User;
+
+  const topAlbums = await fm.getTopAlbums({
     limit: 5,
-    period: "7day",
+    period: "1month",
+  });
+  const topTracks = await fm.getTopTracks({
+    limit: 5,
+    period: "1month",
+  });
+  const topArtists = await fm.getTopArtists({
+    limit: 5,
+    period: "1month",
   });
 
   return (
@@ -62,7 +71,11 @@ export default async function Home() {
         <a href="mailto:jack@jv-la.com">send me an email</a>.
       </p>
 
-      <Music topTracks={topTracks} />
+      {/* <Music
+        topTracks={topTracks}
+        topAlbums={topAlbums}
+        topArtists={topArtists}
+      /> */}
       {/* <Library books={books} /> */}
     </main>
   );
