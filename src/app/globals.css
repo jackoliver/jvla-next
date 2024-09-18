@@ -44,6 +44,8 @@ header {
 main {
   font-size: 1rem;
   color: var(--foreground);
+  max-width: 1180px;
+  margin: auto;
 }
 
 a {
@@ -65,4 +67,32 @@ a:hover {
 
 .album:hover {
   filter: grayscale(0);
+}
+
+.album-grid {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+@media screen and (max-width: 1100px) {
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .album-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
 }

@@ -44,7 +44,7 @@ export default async function Home() {
   const fm = LastFM().User;
 
   const topAlbums = await fm.getTopAlbums({
-    limit: 5,
+    limit: 6,
     period: "7day",
   });
   const topTracks = await fm.getTopTracks({

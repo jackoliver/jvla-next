@@ -40,10 +40,10 @@ export const Music = ({ topTracks, topAlbums, topArtists }: MusicProps) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
           gap: "16px",
           justifyContent: "start",
         }}
+        className="album-grid"
       >
         {topAlbums.map((album) => (
           <div
