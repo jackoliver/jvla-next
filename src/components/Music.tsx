@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { ILastFMAlbum, ILastFMArtist, ILastFMTrack } from "@/lib/fm/types";
 import Image from "next/image";
 

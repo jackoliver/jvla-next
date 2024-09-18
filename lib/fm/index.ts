@@ -34,6 +34,7 @@ const prepareTopAlbums = (response: ILastFMGetTopAlbumsResponse) =>
 
 const buildQueryParams = (options: ILastFMOptions) => {
   const params = Object.entries(options)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .filter(([_, value]) => value)
     .map(([key, value]) => `${key}=${value}`)
     .join("&");
