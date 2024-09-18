@@ -1,4 +1,5 @@
 import { ILastFMAlbum, ILastFMArtist, ILastFMTrack } from "@/lib/fm/types";
+import Image from "next/image";
 
 interface MusicProps {
   topTracks: ILastFMTrack[];
@@ -11,10 +12,10 @@ export const Music = ({ topTracks, topAlbums, topArtists }: MusicProps) => {
     <>
       <br />
       <br />
-      <h2>Recent Listening (WIP)</h2>
+      <h2>Recent Listening: Albums</h2>
       <hr />
       <br />
-      <div className="flex justify-between">
+      {/* <div className="flex justify-between">
         <h3>Top Tracks</h3>
       </div>
       <br />
@@ -33,12 +34,41 @@ export const Music = ({ topTracks, topAlbums, topArtists }: MusicProps) => {
           <div key={artist.mbid}>{artist.name}</div>
         ))}
       </div>
-      <br />
-      <h3>Top Albums</h3>
-      <br />
-      <div>
+      <br /> */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(5, 1fr)",
+          gap: "16px",
+          justifyContent: "start",
+        }}
+      >
         {topAlbums.map((album) => (
-          <div key={album.mbid}>{album.name}</div>
+          <div
+            style={{
+              display: "flex",
+              gap: 16,
+              flexDirection: "column",
+            }}
+            key={album.mbid}
+          >
+            <div>
+              <Image
+                style={{ display: "block", width: "100%", aspectRatio: "1/1" }}
+                src={album.image[3]["#text"]}
+                width="420"
+                height="420"
+                alt={album.name}
+                className="album"
+              />
+            </div>
+            <div>
+              <div style={{ fontWeight: "bold", color: "white" }}>
+                {album.name}
+              </div>
+              <div style={{ fontSize: ".9rem" }}>{album.artist.name}</div>
+            </div>
+          </div>
         ))}
       </div>
     </>

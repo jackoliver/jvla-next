@@ -45,7 +45,7 @@ export default async function Home() {
 
   const topAlbums = await fm.getTopAlbums({
     limit: 5,
-    period: "1month",
+    period: "7day",
   });
   const topTracks = await fm.getTopTracks({
     limit: 5,
@@ -71,11 +71,11 @@ export default async function Home() {
         <a href="mailto:jack@jv-la.com">send me an email</a>.
       </p>
 
-      {/* <Music
+      <Music
         topTracks={topTracks}
         topAlbums={topAlbums}
         topArtists={topArtists}
-      /> */}
+      />
       {/* <Library books={books} /> */}
     </main>
   );

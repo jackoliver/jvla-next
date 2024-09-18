@@ -57,3 +57,12 @@ a:hover {
   color: var(--background);
   background: var(--links);
 }
+
+.album {
+  filter: grayscale(1);
+  transition: filter 0.25s;
+}
+
+.album:hover {
+  filter: grayscale(0);
+}
